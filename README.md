@@ -20,8 +20,10 @@ This is a kit for clock and reset verification in ASIC, the kit provide follow f
 ## 3 Example
 
 simple clock tree
+
 <img  style="width:800px" src="https://img2023.cnblogs.com/blog/898240/202310/898240-20231009112622074-1047173914.png">
 simple reset tree
+
 <img  style="width:800px" src="https://img2023.cnblogs.com/blog/898240/202310/898240-20231009172003776-270156522.png">
 
 ### 3.1 Fill in form as follow

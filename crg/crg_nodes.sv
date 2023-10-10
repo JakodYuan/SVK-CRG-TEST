@@ -11,7 +11,7 @@ class crg_nodes extends uvm_component;
     
     svk_clk_node   clk_nodes[string];
     svk_rst_node   rst_nodes[string];
-    xxx_reg_block  model;
+    xxx_reg_block  model;// nead to modify
     
     function new(string name="", uvm_component parent);
         super.new(name, parent);

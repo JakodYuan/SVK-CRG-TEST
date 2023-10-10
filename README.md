@@ -22,6 +22,7 @@ This is a kit for clock and reset verification in ASIC, the kit provide follow f
 simple clock tree
 
 <img  style="width:800px" src="https://img2023.cnblogs.com/blog/898240/202310/898240-20231009112622074-1047173914.png">
+
 simple reset tree
 
 <img  style="width:800px" src="https://img2023.cnblogs.com/blog/898240/202310/898240-20231009172003776-270156522.png">
@@ -29,8 +30,10 @@ simple reset tree
 ### 3.1 Fill in form as follow
 
 clock sheet
+
 ![img](https://img2023.cnblogs.com/blog/898240/202310/898240-20231009113028320-1096003165.png)
 reset sheet
+
 ![img](https://img2023.cnblogs.com/blog/898240/202310/898240-20231009171520311-1156407629.png)
 
 ### 3.2 Run the script
@@ -68,6 +71,7 @@ After runing script, will generate two files - "crg_nodes.sv" and "crg_if_inst.s
     endfunction
     endclass
     ```
+    modify "xxx_reg_block" of "crg_node.sv" to the same type as xxx_model which set at env.
 3. add `include "crg_if_inst.sv"` into tb_top
     ```sv
         module tb_top();
@@ -260,3 +264,4 @@ class svk_clk_new_node extends svk_clk_node;
     endtask
 endclass
 ```
+

@@ -3,19 +3,18 @@
  *  All right reserved.
 ************************************************************/
 
-
 `ifndef SVK_CRG__SV
 `define SVK_CRG__SV
 
-virtual svk_clk_if clks[string];
-virtual svk_rst_if rsts[string];
+virtual svk_clk_if clk_ifs[string];
+virtual svk_rst_if rst_ifs[string];
 
 function virtual svk_clk_if get_clk_if(string wildcard_path);
     virtual svk_clk_if ci_q[$];
 
-    foreach(clks[clk_hire])begin
+    foreach(clk_ifs[clk_hire])begin
         if(uvm_is_match(wildcard_path, clk_hire))begin
-            ci_q.push_back(clks[clk_hire]);
+            ci_q.push_back(clk_ifs[clk_hire]);
         end
     end
 
@@ -32,7 +31,7 @@ function virtual svk_clk_if get_clk_if(string wildcard_path);
     else begin
         `uvm_error("get_clk_if", $sformatf("not find any svk_clk_if with wildcard_path=%0s", wildcard_path))
         `uvm_info("get_clk_if", "all svk_clk_if:", UVM_NONE)
-        foreach(clks[clk_hire])begin
+        foreach(clk_ifs[clk_hire])begin
             `uvm_info("get_clk_if", $sformatf("clk_hire=%0s", clk_hire), UVM_NONE)
         end
     end
@@ -41,9 +40,9 @@ endfunction
 function virtual svk_rst_if get_rst_if(string wildcard_path);
     virtual svk_rst_if ri_q[$];
 
-    foreach(rsts[rst_hire])begin
+    foreach(rst_ifs[rst_hire])begin
         if(uvm_is_match(wildcard_path, rst_hire))begin
-            ri_q.push_back(rsts[rst_hire]);
+            ri_q.push_back(rst_ifs[rst_hire]);
         end
     end
 
@@ -60,11 +59,10 @@ function virtual svk_rst_if get_rst_if(string wildcard_path);
     else begin
         `uvm_error("get_rst_if", $sformatf("not find any svk_rst_if with wildcard_path=%0s", wildcard_path))
         `uvm_info("get_rst_if", "all svk_rst_if:", UVM_NONE)
-        foreach(rsts[rst_hire])begin
+        foreach(rst_ifs[rst_hire])begin
             `uvm_info("get_rst_if", $sformatf("rst_hire=%0s", rst_hire), UVM_NONE)
         end
     end
 endfunction
 
 `endif
-

@@ -1,7 +1,7 @@
-/***********************************************************
- *  Copyright (C) 2023 by JakodYuan (JakodYuan@outlook.com).
- *  All right reserved.
-************************************************************/
+#***********************************************************
+# *  Copyright (C) 2023 by JakodYuan (JakodYuan@outlook.com).
+# *  All right reserved.
+#************************************************************
 
 import xlwings as xw
 import os,sys
@@ -42,7 +42,7 @@ def gen_clk_cfg(line_idx, line, fid):
         fid.writelines('        clk_nodes["node' + str(int(line.node_number)) + '"].cfg.ppm = ' + str(line[8]) + ';\n')
     if line.cfgs != None:
         fields = line.cfgs.split('\n')
-        if line[0] == "svk_clk_pll_node" and len(fields) != 7:     # pll类型需要7个配置
+        if line[0] == "svk_clk_pll_node" and len(fields) != 7:
             print("error:len(fields) != 7 in line_idx=%0d" % line_idx)
 
         for field in fields:
@@ -63,7 +63,7 @@ def gen_clk_cfg(line_idx, line, fid):
     fid.writelines('\n')
 
 
-def gen_rst_cfg(line_idx:int, line, fid):
+def gen_rst_cfg(line_idx, line, fid):
     fid.writelines('        rst_nodes["node' + str(int(line.node_number)) + '"].cfg.ri = rst_ifs["u_rst_if' + str(int(line.node_number)) + '"];\n')
     if line.pre_node != None:
         if isinstance(line.pre_node, float):
@@ -116,20 +116,17 @@ def gen_file_head(wid):
     wid.writelines('
     wid.writelines('
     wid.writelines('\n')
-    wid.writelines('virtual svk_clk_if  clk_ifs[string];\n')
-    wid.writelines('virtual svk_rst_if  rst_ifs[string];\n')
-    wid.writelines('\n')
     wid.writelines('class crg_nodes extends uvm_component;\n')
     wid.writelines('    `uvm_component_utils(crg_nodes)\n')
-    wid.writelines('    \n')
+    wid.writelines('\n')
     wid.writelines('    svk_clk_node   clk_nodes[string];\n')
     wid.writelines('    svk_rst_node   rst_nodes[string];\n')
-    wid.writelines('    xxx_reg_block  model;\n')
-    wid.writelines('    \n')
+    wid.writelines('    xxx_reg_block  model;
+    wid.writelines('\n')
     wid.writelines('    function new(string name="", uvm_component parent);\n')
     wid.writelines('        super.new(name, parent);\n')
     wid.writelines('    endfunction\n')
-    wid.writelines('    \n')
+    wid.writelines('\n')
     wid.writelines('    function void build_phase(uvm_phase phase);\n')
 
 def gen_crg_nodes(clk_lines, rst_lines, wid):
@@ -156,9 +153,9 @@ def gen_crg_nodes(clk_lines, rst_lines, wid):
 
 
 def gen_file_tail(wid):
-    wid.writelines('    \n')
+    wid.writelines('\n')
     wid.writelines('    endfunction\n')
-    wid.writelines('    \n')
+    wid.writelines('\n')
     wid.writelines('    task check_clk();\n')
     wid.writelines('        foreach(clk_nodes[i])begin\n')
     wid.writelines('            if(clk_nodes[i].cfg.is_end_point)\n')

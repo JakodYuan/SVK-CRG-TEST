@@ -30,7 +30,7 @@ package svk_crg_pkg;
     `include "svk_rst_sync_node.sv"
     `include "svk_rst_wire_node.sv"
 
-
+    `include "svk_crg.sv"
     `include "crg_nodes.sv"
 endpackage
 

@@ -6,9 +6,6 @@
 
 
 
-virtual svk_clk_if  clk_ifs[string];
-virtual svk_rst_if  rst_ifs[string];
-
 class crg_nodes extends uvm_component;
     `uvm_component_utils(crg_nodes)
     
